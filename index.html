@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            this is an simple car game
+        </title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script>
+            function colors()
+            {
+                let x=3,y=40,z='55',b='20';
+                let a=0;
+                for(a=0;a<100;a++)
+                {
+                    var canvas = document.getElementById("myCanvas");
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(x,y,z,b);
+                    x=x+100;
+                }
+                x=3;y=50;
+                for(a=0;a<100;a++)
+                {
+                    var canvas = document.getElementById("myCanvas1");
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(x,y,z,b);
+                    x=x+100;
+                }
+                x=3;y=55;
+                for(a=0;a<100;a++)
+                {
+                    var canvas = document.getElementById("myCanvas2");
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(x,y,z,b);
+                    x=x+100;
+                }
+                x=3;y=55;
+                for(a=0;a<100;a++)
+                {
+                    var canvas = document.getElementById("myCanvas15");
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(x,y,z,b);
+                    x=x+100;
+                }
+                var start = null; 
+                var element1 = document.getElementById('color1');
+                var element2 = document.getElementById('color2');
+                var element3 = document.getElementById('color3');
+                var element4 = document.getElementById('color4');
+                function startAnim(timestamp) {
+                if (!start) start = timestamp;
+                var progress = timestamp - start;
+                element1.style.transform = element3.style.transform =
+                'translateX(' +'-'+ Math.min(progress / 10, 7000) + 'px)';
+                element2.style.transform = element4.style.transform =
+                'translateX(' + Math.min(progress / 10, 7000) + 'px)';
+                window.requestAnimationFrame(startAnim);
+                }
+                window.requestAnimationFrame(startAnim);
+                let ele=document.querySelector("#maincar")
+                let posi=document.getElementById("maincar");
+                var pos=ele.getBoundingClientRect();
+                var time = new Date();
+                let second=time.getSeconds();
+                console.log("naitik");
+                console.log(pos);
+                let k=500,j=740,lo=0;let control;
+                var ca1=0,ca2,ca3,ca4,cb1=0,cb2,cb3,cb4,co=1,sec2=second+3,sec=0,sec3=0;
+                /*setInterval(showTime(), 1000);
+                function showTime() {
+                    let time = new Date();
+                let sec = time.getSeconds();*/
+                 document.addEventListener("keydown",function(e){
+                    console.log(k);
+                     
+                    
+                    if (e.keyCode == '38') {
+                        if(k>140){
+                       k=k-120;
+                       posi.style.top=k+"px"; }
+                    }
+                    else if (e.keyCode == '40') {  
+                       if(k<500){
+                    k += 120;
+                    posi.style.top = k+"px";
+                       }
+                    }
+                    else if (e.keyCode == '39') {
+                    if(j<1320){
+                   j=j+50;
+                   posi.style.left=j+"px";
+                   }
+                }
+                    else if (e.keyCode == '37') {
+                       if(j>=0){
+                    j -= 50;
+                    posi.style.left = j+"px";  
+                       }
+                   }
+                   
+                   if(k==140)
+                    {
+                        var time1 = new Date();
+                        let sec1 = time1.getSeconds();
+                        //if(co==1){sec2=sec1;co++;}
+                        sec=Math.abs(sec1-sec2);
+                        if(sec<20)ca1=sec;
+                        if(sec>20&&sec<40){ca1=sec-20;}
+                        if(sec>40&&sec<60){ca1=sec-40;}
+                    if((sec1)>=1)
+                    {
+                        
+                        let ab=Math.abs((100*ca1)-j);
+                        if(ab<100)
+                        alert("got out");
+                    }
+                    if((ca1)>=6)
+                    {
+                        ca2=ca1-6;
+                        if(ca2<0)ca2=14+ca1;
+                        let ab=Math.abs((100*ca2)-j);
+                        if(ab<100)
+                        alert("got out");
+                    }
+                    if((ca1)>=13)
+                    {
+                        ca3=ca1-13;
+                        if(ca3<0)ca3=7+ca1;
+                        let ab=Math.abs((100*ca3)-j); 
+                        if(ab<100)
+                        alert("got out");
+                    }
+                    if((ca1)>=17)
+                    {
+                        ca4=ca1-13;
+                        if(ca4<0)ca4=7+ca1;
+                        let ab=Math.abs((100*ca4)-j); 
+                        if(ab<100)
+                        alert("got out");
+                    }
+                   }
+                   if(k==500||k==380)
+                    {
+                        var time2 = new Date();
+                        let sec4 = time2.getSeconds();
+                        //if(co==1){sec2=sec1;co++;}
+                        sec3=Math.abs(sec4-sec2);
+                        if(sec3<15)cb1=sec3;
+                        if(sec3>15&&sec3<30){cb1=sec3-15;}
+                        if(sec3>30&&sec3<45){cb1=sec3-30;}
+                        if(sec3>45&&sec3<60){cb1=sec3-45;}
+                    if((sec4)>=1)
+                    {
+                        
+                        let ab=Math.abs((150*cb1)-j);
+                        if(ab<100)
+                        alert("got out");
+                    }
+                    if((cb1)>=4)
+                    {
+                        cb2=cb1-4;
+                        if(cb2<0)cb2=11+cb1;
+                        let ab=Math.abs((150*cb2)-j);
+                        if(ab<100)
+                        alert("got out");
+                    }
+                    if((cb1)>=9)
+                    {
+                        cb3=cb1-9;
+                        if(ca3<0)cb3=6+cb1;
+                        let ab=Math.abs((125*cb3)-j);
+                        if(ab<100)
+                        alert("got out");
+                    }
+                    if((cb1)>=12)
+                    {
+                        cb4=cb1-12;
+                        if(cb4<0)cb4=1+cb1;
+                        let ab=Math.abs((125*cb4)-j);
+                        if(ab<100)
+                        alert("got out");
+                    }
+                   }
+                });
+                
+                //}
+                }
+        </script>
+        <style>
+            .first
+            {
+              position: fixed;
+              top: 17%;
+              height: 15%;
+              width: 200%;
+              background-color: black;
+              border: 5px dashed blueviolet;
+            }
+            .second
+            {
+                position: fixed;
+                top: 33%;
+                height: 15%;
+                width: 200%;
+                background-color: black;
+                border: 5px dashed blueviolet;
+            }
+            .third
+            {
+                position: fixed;
+                top: 49%;
+                height: 15%;
+                width: 200%;
+                background-color: black;
+                border: 5px dashed blueviolet;
+            }
+            .fourth
+            {
+                position: fixed;
+                top: 65%;
+                height: 15%;
+                width: 200%;
+                background-color: black;
+                border: 5px dashed blueviolet;
+            }
+            #car1
+            {
+                position: absolute;
+                left: 1%;
+                width: 170px;
+                height: 87px;
+                border-radius: 20px;
+            }
+            #maincar
+            {
+                position: absolute;
+                left: 1%;
+                width: 170px;
+                height: 87px;
+                border-radius: 20px;
+                box-shadow: 0 0 40px #f32121, 0 0 40px #f32167, 0 0 40px #f32121, 0 0 40px #f32133;
+            }
+            #log
+            {
+                position: fixed;
+                top: 0%;
+                left: 50%;
+            }
+                @-webkit-keyframes move {
+                from {-webkit-transform: translateX(-200px);}
+                to {-webkit-transform: translateX(1500px);}
+                }
+                @-webkit-keyframes moves {
+                from {-webkit-transform: translateX(1500px);}
+                to {-webkit-transform: translateX(-200px);}
+                }
+            
+        </style>
+        <body onload="javascript:colors()">
+        <div class="top">
+            <div class="first">
+                <div id="color1" >
+                    <canvas id="myCanvas" width="10000" height="110"></canvas>
+                </div>
+            </div>
+            <div class="second">
+                <div id="color2">
+                    <canvas id="myCanvas1" width="10000" height="110"></canvas>
+                </div>
+            </div>
+             <div class="third">
+                 <div id="color3">
+                    <canvas id="myCanvas2" width="10000" height="110"></canvas>
+                 </div>
+             </div>
+             <div class="fourth">
+                <div id="color4">
+                   <canvas id="myCanvas15" width="10000" height="110"></canvas>
+                </div>
+            </div>
+        </div>
+        <div id="car">
+            <div id="car1" style="top: 18%; animation: move 20s linear 1s infinite forwards;
+             background-color: rgb(233, 10, 10);">
+                <div class="wheel1">
+                    <canvas id="myCanvas3" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 18%; animation: move 20s linear 7s infinite forwards;
+             background-color: rgb(233, 174, 10);">
+                <div class="wheel1">
+                    <canvas id="myCanvas4" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 18%; animation: move 20s linear 14s infinite forwards;
+             background-color: rgb(10, 233, 77);">
+                <div class="wheel1">
+                    <canvas id="myCanvas5" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 18%; animation: move 20s linear 18s infinite forwards;
+             background-color: rgb(10, 51, 233);">
+                <div class="wheel1">
+                    <canvas id="myCanvas6" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1"  style="top: 35%; animation: moves 15s linear 1s infinite forwards; 
+            background-color: rgb(125, 10, 233);">
+                <div class="wheel1">
+                    <canvas id="myCanvas7" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1"  style="top: 35%; animation: moves 15s linear 6s infinite forwards; 
+            background-color: rgb(92, 233, 10);">
+                <div class="wheel1">
+                    <canvas id="myCanvas8" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1"  style="top: 35%; animation: moves 15s linear 11s infinite forwards; 
+            background-color: rgb(233, 10, 148);">
+                <div class="wheel1">
+                    <canvas id="myCanvas9" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1"  style="top: 35%; animation: moves 15s linear 14s infinite forwards; 
+            background-color: rgb(10, 207, 233);">
+                <div class="wheel1">
+                    <canvas id="myCanvas10" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 50%; animation: move 15s linear 1s infinite forwards; 
+            background-color: rgb(10, 233, 47);">
+                <div class="wheel1">
+                    <canvas id="myCanvas11" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 50%; animation: move 15s linear 6s infinite forwards; 
+            background-color: rgb(233, 10, 21);">
+                <div class="wheel1">
+                    <canvas id="myCanvas12" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 50%; animation: move 15s linear 11s infinite forwards; 
+            background-color: rgb(233, 10, 177);">
+                <div class="wheel1">
+                    <canvas id="myCanvas13" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 50%; animation: move 15s linear 14s infinite forwards; 
+            background-color: rgb(51, 10, 233);">
+                <div class="wheel1">
+                    <canvas id="myCanvas14" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 66%; animation: moves 8s linear 1s infinite forwards; 
+            background-color: rgb(233, 10, 177);">
+                <div class="wheel1">
+                    <canvas id="myCanvas16" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 66%; animation: moves 8s linear 5s infinite forwards; 
+            background-color: rgb(200, 233, 10);">
+                <div class="wheel1">
+                    <canvas id="myCanvas17" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 66%; animation: moves 8s linear 12s infinite forwards; 
+            background-color: rgb(10, 81, 233);">
+                <div class="wheel1">
+                    <canvas id="myCanvas18" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="car1" style="top: 66%; animation: moves 8s linear 22s infinite forwards; 
+            background-color: rgb(233, 10, 133);">
+                <div class="wheel1">
+                    <canvas id="myCanvas19" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="maincar" style="top:50%; left: 50%; background-color: rgb(2, 184, 240);">
+                <div class="wheel1">
+                   
+                    <canvas id="myCanvas20" width="200" height="200">
+                        <script src="design.js"></script>
+                    </canvas> 
+                </div>
+            </div>
+            <div id="log"></div>
+            </canvas>
+        </div>
+        </body>
+    </head>
+</html>
